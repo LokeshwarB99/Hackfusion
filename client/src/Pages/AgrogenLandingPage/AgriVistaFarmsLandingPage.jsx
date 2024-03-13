@@ -45,7 +45,9 @@ import { VectorIcon } from './VectorIcon.jsx';
         The Revolutionary Impact of Technology on Agriculture
       </div>
       <div className={classes.rectangle9}></div>
+      <Link to="/helpline">
       <div className={classes.getStarted}>Get Started</div>
+      </Link>
       <div className={classes.rectangle8}></div>
       <div className={classes.learnMore}>Learn More</div>
 
@@ -220,11 +222,11 @@ import { VectorIcon } from './VectorIcon.jsx';
         <GroupIcon className={classes.icon10} />
       </div>
       <div className={classes.image5}></div>
-      <div className={classes.rectangle32}></div>
+      {/* <div className={classes.rectangle32}></div> */}
       {/* <div className={classes.rectangle33}></div> */}
       {/* <div className={classes.rectangle34}></div> */}
-      <div className={classes.hiHowCanHelpYou}> Hi 👋🏽 how can help you 👀</div>
-      <div className={classes.image6}></div>
+      {/* <div className={classes.hiHowCanHelpYou}> Hi 👋🏽 how can help you 👀</div> */}
+      <div className={classes.image6}></div> 
       <div className={classes.image7}></div>
       <div className={classes.image8}></div>
       <div className={classes.rectangle36}></div>

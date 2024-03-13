@@ -5,6 +5,15 @@ import axios from "axios";
 import PlaceImg from "../Components/PlaceImg";
 export default function PlacesPage() {
   const [places,setPlaces] = useState([]);
+  const [text, setText] = useState("Yet to be Verified.");
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setText("Accepted And sold");
+    }, 10000); // Change text after 20 seconds
+
+    return () => clearTimeout(timer);
+  }, []); 
   useEffect(() => {
     axios.get('http://localhost:5000/user-places').then(({data}) => {
       setPlaces(data);
@@ -35,7 +44,7 @@ export default function PlacesPage() {
                 <p className="text-sm mt-2 w-96">{place.description}</p>
               </div>
               <div className="bg-green-600 text-black-800 px-4 py-2 rounded-md w-48 mt-12">
-  Accepted and Yet to be Sold.
+              {text}
 </div>
 
               </div>

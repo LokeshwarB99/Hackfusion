@@ -18,6 +18,7 @@ import BookingPage from "./Pages/BookingPage";
 import Deliveryagent from './Pages/Deliveryagent'
 import Chooser from './Pages/Chooser'
 import Home from './Pages/AgrogenLandingPage/AgriVistaFarmsLandingPage'
+import Helpline from './Pages/Helpline/Helpline'
 axios.defaults.baseURL = 'http://localhost:5000';
 axios.defaults.withCredentials = true;
 
@@ -44,6 +45,8 @@ function App() {
           <Route path="/account/bookings" element={<BookingsPage />} />
           <Route path="/account/bookings/:id" element={<BookingPage />} />
           <Route path="/delivery" element={<Deliveryagent />} />
+          <Route path="/helpline" element={<Helpline />} />
+
 
 
 

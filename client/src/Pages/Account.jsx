@@ -54,20 +54,21 @@ export default function AccountPage() {
     <div>
       <AccountNav />
       {/* <div></div> */}
-      <div class="flex align-middle justify-center ">
-  <div class="align-middle justify-center rounded overflow-hidden shadow-lg h-full">
-    <div class="px-4 py-2 flex space-between gap-4 ">
-      <p class="text-gray-700 text-sm ">User:</p>
-      <p class="font-bold text-2xl mb-1">{user.name}</p>
-      <p class="text-gray-700 text-sm mb-1">Email:</p>
-
-      <p class="text-gray-700 text-xl">{user.email}</p>
-      <button onClick={logout} className="primary max-w-sm mt-2">
-            Logout
-          </button>
+      <div class="flex items-center justify-center">
+  <div class="max-w-md rounded overflow-hidden shadow-lg w-full">
+    <div class="px-6 py-4">
+      <div class="font-bold text-xl mb-2">User Profile</div>
+      <div class="mb-4">
+        <p class="text-gray-700 text-base">User: <span class="font-bold">{user.name}</span></p>
+        <p class="text-gray-700 text-base">Email: <span class="font-bold">{user.email}</span></p>
+      </div>
+      <button onClick={logout} class="bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded">
+        Logout
+      </button>
     </div>
   </div>
 </div>
+
 
 
       {subpage === "profile" && (
