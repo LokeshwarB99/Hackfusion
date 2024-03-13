@@ -83,15 +83,15 @@ export default function PlacesFormPage() {
   return (
     <div>
       <AccountNav />
-      <form onSubmit={savePlace}>
+      <form onSubmit={savePlace} >
         {preInput('Crop Name', 'Title for your crop. ')}
-        <input type="text" value={title} onChange={ev => setTitle(ev.target.value)} placeholder="title, for example: My lovely apt"/>
+        <input type="text" value={title}  onChange={ev => setTitle(ev.target.value)} placeholder="title, for example: My lovely apt"/>
         {preInput('Address', 'Address to this place')}
-        <input type="text" value={address} onChange={ev => setAddress(ev.target.value)}placeholder="address"/>
+        <input type="text" value={address} onChange={ev => setAddress(ev.target.value)} placeholder="address"/>
         {preInput('Photos','more = better')}
         <PhotosUploader addedPhotos={addedPhotos} onChange={setAddedPhotos} />
         {preInput('Description','description of the place')}
-        <textarea value={description} onChange={ev => setDescription(ev.target.value)} />
+        <textarea value={description}  onChange={ev => setDescription(ev.target.value)} />
         {preInput('Perks','select all the perks of your place')}
         <div className="grid mt-2 gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
           <Perks selected={perks} onChange={setPerks} />
@@ -101,26 +101,26 @@ export default function PlacesFormPage() {
         {preInput('Check in&out times','add check in and out times, remember to have some time window for cleaning the room between guests')}
         <div className="grid gap-2 grid-cols-2 md:grid-cols-4">
           <div>
-            <h3 className="mt-2 -mb-1">Check in time</h3>
+            <h3 className="mt-2 -mb-1">Harvest time</h3>
             <input type="text"
                    value={checkIn}
                    onChange={ev => setCheckIn(ev.target.value)}
                    placeholder="14"/>
           </div>
           <div>
-            <h3 className="mt-2 -mb-1">Check out time</h3>
+            <h3 className="mt-2 -mb-1">Expiry time</h3>
             <input type="text"
                    value={checkOut}
                    onChange={ev => setCheckOut(ev.target.value)}
                    placeholder="11" />
           </div>
           <div>
-            <h3 className="mt-2 -mb-1">Max number of guests</h3>
+            <h3 className="mt-2 -mb-1">Quantity Available</h3>
             <input type="number" value={maxGuests}
                    onChange={ev => setMaxGuests(ev.target.value)}/>
           </div>
           <div>
-            <h3 className="mt-2 -mb-1">Price per night</h3>
+            <h3 className="mt-2 -mb-1">Price per kg</h3>
             <input type="number" value={price}
                    onChange={ev => setPrice(ev.target.value)}/>
           </div>

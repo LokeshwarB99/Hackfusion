@@ -21,7 +21,7 @@ export default function PlacesPage() {
             Add new stock
           </Link>
         </div>
-        <div className="mt-4">
+        <div className="mt-4 w-3/4 ml-48">
           {places.length > 0 && places.map(place => (
             <Link to={'/account/places/'+place._id} className="flex cursor-pointer gap-4 bg-gray-100 p-4 rounded-2xl">
               <div className="mr-24 ml-64">
@@ -34,6 +34,10 @@ export default function PlacesPage() {
                 <h2 className="text-xl w-96">{place.title}</h2>
                 <p className="text-sm mt-2 w-96">{place.description}</p>
               </div>
+              <div className="bg-green-600 text-black-800 px-4 py-2 rounded-md w-48 mt-12">
+  Accepted and Yet to be Sold.
+</div>
+
               </div>
             </Link>
           ))}

@@ -25,3 +25,7 @@ button.primary{
     background-color: #F5385D;
     @apply bg-secondary p-2 w-full text-white rounded-2xl;
 }
+
+input{
+width:50%;
+}

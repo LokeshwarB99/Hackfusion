@@ -32,9 +32,9 @@ export default function PlacePage() {
             <h2 className="font-semibold text-2xl ">Description</h2>
             {place.description}
           </div>
-          <b>Check-in:</b> {place.checkIn}<br />
-          <b>Check-out:</b> {place.checkOut}<br />
-          <b>Max number of guests:</b> {place.maxGuests}
+          <b>Harvest:</b> {place.checkIn}<br />
+          <b>Expiry time:</b> {place.checkOut}<br />
+          <b>Max number of stocks:</b> {place.maxGuests}
         </div>
         <div>
           <BookingWidget place={place} />
