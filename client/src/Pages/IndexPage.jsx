@@ -7,6 +7,27 @@ import DashBoard from "../Components/DashBoard.jsx";
 
 export default function IndexPage() {
   const [places,setPlaces] = useState([]);
+  const payNow = async (token) => {
+    try {
+      const response = await axios({
+        url: "/payment",
+        method: "post",
+        data: {
+          amount: priceForStripe * noOfBookings,
+          token,
+          currency: "inr",
+        },
+      });
+      if (response.status === 200) {
+        handleBook();
+        alert("Payment Successful");
+      }
+    } catch (error) {
+      // handleFailure();
+      alert("Payment Failed");
+      console.log(error);
+    }
+  };
   useEffect(() => {
     axios.get('http://localhost:5000/places').then(response => {
       setPlaces(response.data);

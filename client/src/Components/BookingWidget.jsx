@@ -3,6 +3,8 @@ import {differenceInCalendarDays} from "date-fns";
 import axios from "axios";
 import {Navigate} from "react-router-dom";
 import {UserContext} from "../UserContext.jsx";
+import StripeCheckout from "react-stripe-checkout";
+
 
 export default function BookingWidget({place}) {
   const [checkIn,setCheckIn] = useState('');
@@ -12,6 +14,34 @@ export default function BookingWidget({place}) {
   const [phone,setPhone] = useState('');
   const [redirect,setRedirect] = useState('');
   const {user} = useContext(UserContext);
+  const publishableKey =
+    "pk_test_51OdlCuSFfBij0ekrxB8KgUsE3i7Mu3vHtOBwnsJcKrPiMrSZCnEk6kzrj00z175aHNTAdKc49WDvMPxSjnSU9ZYH00M9ziMs4W";
+  const [priceForStripe, setPrice] = useState(0);
+  const [noOfBookings, setNoOfBookings] = useState(1); // Default to 1 booking
+
+
+  const payNow = async (token) => {
+    try {
+      const response = await axios({
+        url: "/payment",
+        method: "post",
+        data: {
+          amount: 1000,
+          token,
+          currency: "inr",
+        },
+      });
+      if (response.status === 200) {
+        alert("Payment Successful");
+        await bookThisPlace();
+
+      }
+    } catch (error) {
+      // handleFailure();
+      alert("Payment Failed");
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     if (user) {
@@ -76,12 +106,22 @@ export default function BookingWidget({place}) {
           </div>
         )}
       </div>
-      <button onClick={bookThisPlace} className="primary mt-4">
+      {/* <button onClick={bookThisPlace} className="primary mt-4">
         Book this Stock
         {numberOfNights > 0 && (
           <span> ${numberOfNights * place.price}</span>
-        )}
-      </button>
+        )} */}
+        <StripeCheckout
+              stripeKey={publishableKey}
+              label="Pay Now"
+              name="Pay With Credit Card"
+              // billingAddress
+              // shippingAddress
+              amount={numberOfNights * place.price}
+              description={`Your total is ${numberOfNights * place.price}`}
+              token={payNow }
+            />
+      {/* </button> */}
     </div>
   );
 }

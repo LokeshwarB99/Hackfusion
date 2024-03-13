@@ -334,6 +334,8 @@ const imageDownloader=require('image-downloader');
 const multer=require('multer');
 const  mime=require('mime-types');
 const fs = require('fs');
+const Stripe = require('stripe')('sk_test_51OdlCuSFfBij0ekrEl6R5SjqmI9pTER7Fy0KhVRhyyNDkzWwzb51kQvHJ56skJJokZ2VQal4h6cMm4g5jzq0l1Cl00qG2dVDAL');
+
 
 const {S3Client, PutObjectCommand} = require('@aws-sdk/client-s3');
 
@@ -628,6 +630,35 @@ app.get('/bookings', async (req,res) => {
   mongoose.connect(process.env.MONGO_URL);
   const userData = await getUserDataFromReq(req);
   res.json( await Booking.find({user:userData.id}).populate('place') );
+});
+
+app.post('/payment', async (req, res) => {
+  let status, error;
+  const { token, amount } = req.body;
+  const a=100;
+
+  try {
+    // Create a source using the token
+    const source = await Stripe.sources.create({
+      type: 'card',
+      token: token.id,
+    });
+
+    // Now use the created source to create a paymentIntent
+    const paymentIntent = await Stripe.paymentIntents.create({
+      amount: amount * 100,
+      currency: 'inr',
+      source: source.id,
+    });         
+
+    console.log('Payment successful');
+    status = 'success';
+  } catch (error) {
+    console.log(error);   
+    status = 'Failure';   
+  }
+
+  res.json({ error, status });
 });
 
 app.listen(5000,()=>{

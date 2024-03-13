@@ -85,7 +85,7 @@ export default function PlacesFormPage() {
       <AccountNav />
       <form onSubmit={savePlace} >
         {preInput('Crop Name', 'Title for your crop. ')}
-        <input type="text" value={title}  onChange={ev => setTitle(ev.target.value)} placeholder="title, for example: My lovely apt"/>
+        <input type="text" value={title}  onChange={ev => setTitle(ev.target.value)} placeholder="Title of the crop , For example: Moong"/>
         {preInput('Address', 'Address to this place')}
         <input type="text" value={address} onChange={ev => setAddress(ev.target.value)} placeholder="address"/>
         {preInput('Photos','more = better')}
@@ -105,7 +105,7 @@ export default function PlacesFormPage() {
             <input type="text"
                    value={checkIn}
                    onChange={ev => setCheckIn(ev.target.value)}
-                   placeholder="14"/>
+                   placeholder="1"/>
           </div>
           <div>
             <h3 className="mt-2 -mb-1">Expiry Month</h3>
@@ -115,12 +115,12 @@ export default function PlacesFormPage() {
                    placeholder="11" />
           </div>
           <div>
-            <h3 className="mt-2 -mb-1">Quantity Available(kg)</h3>
+            <h3 className="mt-2 -mb-1">Quantity Available (in kg)</h3>
             <input type="number" value={maxGuests}
                    onChange={ev => setMaxGuests(ev.target.value)}/>
           </div>
           <div>
-            <h3 className="mt-2 -mb-1">Price per kg</h3>
+            <h3 className="mt-2 -mb-1">Price per kg (in rupees)</h3>
             <input type="number" value={price}
                    onChange={ev => setPrice(ev.target.value)}/>
           </div>
