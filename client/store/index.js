@@ -3,7 +3,8 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 const userDetailsSlice = createSlice({
   name: "userDetails",
   initialState: {
-    user:"farmer"
+    user:"farmer",
+    ordered: false,
   },
   reducers: {
     setUser(state, action) {

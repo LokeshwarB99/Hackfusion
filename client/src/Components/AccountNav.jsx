@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 export default function AccountNav() {
   const user = useSelector((state) => state.user);
   // alert(user);
+  const role=localStorage.getItem('role');
   const { pathname } = useLocation();
   let subpage = pathname.split("/")?.[2];
   if (subpage === undefined) {
@@ -36,7 +37,7 @@ export default function AccountNav() {
         </svg>
         My profile
       </Link>
-      { user !== 'farmer' &&
+      { role == 'vendor' &&
         <Link className={linkClasses("bookings")} to={"/account/bookings"}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -55,7 +56,7 @@ export default function AccountNav() {
           My bookings
         </Link>
       }
-      {user === 'farmer' && <Link className={linkClasses("places")} to={"/account/places"}>
+      {role === 'farmer' && <Link className={linkClasses("places")} to={"/account/places"}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

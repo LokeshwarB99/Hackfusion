@@ -16,6 +16,8 @@ import PlacePage from "./Pages/PlacePage";
 import BookingsPage from "./Pages/BookingsPage";
 import BookingPage from "./Pages/BookingPage";
 import Deliveryagent from './Pages/Deliveryagent'
+import Chooser from './Pages/Chooser'
+import Home from './Pages/AgrogenLandingPage/AgriVistaFarmsLandingPage'
 axios.defaults.baseURL = 'http://localhost:5000';
 axios.defaults.withCredentials = true;
 
@@ -25,8 +27,11 @@ function App() {
   return (
     <UserContextProvider>
       <Routes>
+      <Route path='/' element={<Home />} />
+
         <Route path='/' element={<Layout />}>
-          <Route path='/' element={<IndexPage/>} />
+          <Route path='/vendor' element={<IndexPage/>} />
+          <Route path='/chooser' element={<Chooser />} />
           <Route path='/login' element={<Login />} />
            <Route path='/register' element={<Register />} />
            <Route path='/account' element={<AccountPage />} />

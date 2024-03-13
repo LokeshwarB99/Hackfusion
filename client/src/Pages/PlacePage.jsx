@@ -32,8 +32,8 @@ export default function PlacePage() {
             <h2 className="font-semibold text-2xl ">Description</h2>
             {place.description}
           </div>
-          <b>Harvest:</b> {place.checkIn}<br />
-          <b>Expiry time:</b> {place.checkOut}<br />
+          <b>Harvest Month:</b> {place.checkIn}<br />
+          <b>Best Before:</b> {place.checkOut} months<br />
           <b>Max number of stocks:</b> {place.maxGuests}
         </div>
         <div>
